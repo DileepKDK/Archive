@@ -1,0 +1,18 @@
+<h3><%= @client.name %></h3>
+<small><%= link_to "Edit", edit_client_path(@client.id) %> | 
+  <%= link_to "Delete",  client_path(@client.id), method: :delete, data: {confirm: "Are you sure?"} %>
+</small>
+<hr>
+<strong>Company: </strong> <%= @client.company %><br/>
+<strong>Email: </strong> <%= @client.email %><br/>
+<strong>Website: </strong> <%= @client.website %><br/>
+
+<h3>Projects (* <%= @client.projects.size %> *) </h3>
+<ul>
+  <% for project in @client.projects %>
+    <li><%= project.name %></li>
+  <% end %>
+</ul>
+
+
+<%= link_to "List Clients", clients_path %>

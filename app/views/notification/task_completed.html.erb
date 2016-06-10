@@ -1,0 +1,5 @@
+<p>Dear <%= @task.project.client.name %></p>
+ <p>Task (<%= @task.name %>) has been completed on <%= @task.updated_at.strftime("%A, %d %B %Y") %> at <%= @task.updated_at.strftime("%H:%M %p")%> which belongs to <%= @task.project.name %></p>
+<p>Regards,<br/>
+	<%= @task.project.user.email %></p>
+	

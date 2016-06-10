@@ -1,0 +1,62 @@
+<h3><%= @client.name %></h3>
+<p><%= @client.details %></p>
+
+<h3>Total Clients - <%= @clients.size %></h3>
+<ul>
+  <% for client in @clients %>
+    <li><%= client.details %></li>
+  <% end %>
+</ul>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Sl No</th>
+      <th>Name</th>
+      <th>Company</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clients.each_with_index do |client,index| %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= client.name %></td>
+      <td><%= client.company %></td>
+      <td><%= client.email %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Projects</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Sl No</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Start Date</th>
+      <th>Client</th>
+      <th>Status</th>
+      <th>Total Tasks</th>
+      <th>Incompleted Tasks</th>
+      <th>Completed Tasks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each_with_index do |project,index| %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= project.name %></td>
+      <td><%= project.description %></td>
+      <td><%= project.start_date %></td>
+      <td><%= project.client.try(:name) %></td>
+      <td><%= project.status %></td>
+      <td><%= project.tasks.size %></td>
+      <td><%= project.tasks.where('is_completed = ?', false).size %></td>
+      <td><%= project.tasks.where('is_completed = ?', true).size %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,10 @@
+<h3>Listing Projects</h3>
+<%= link_to "Export", projects_path(format: "xls") %>
+
+<ul>
+<% for project in @projects %>
+  <li><%= link_to project.name, project_path(project) %></li>
+<% end %>
+</ul>
+
+<%= link_to "New Project", new_project_path %>

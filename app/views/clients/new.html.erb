@@ -1,0 +1,27 @@
+<h3>Add Client</h3>
+<%= form_for @client do |f| %>
+<% if @client.errors.any? %>
+<div class="error" style="color:red" >
+  <h4>Form Error!!!</h4>
+<ul>
+  <% for msg in @client.errors.full_messages %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+</div>
+<% end %>
+
+<label>Name:</label><br/>
+<%= f.text_field :name %><br/>
+
+<label>Company:</label><br/>
+<%= f.text_field :company %><br/>
+
+<label>Email:</label><br/>
+<%= f.email_field :email %><br/>
+
+<label>Website:</label><br/>
+<%= f.text_field :website %><br/>
+
+<%= f.submit %> or <%= link_to "List Clients", clients_path %>
+<% end %>
